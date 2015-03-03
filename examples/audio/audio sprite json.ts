@@ -1,6 +1,6 @@
 
 
-var fx: Phaser.Audio;
+var fx: Phaser.Sound;
 
 var game = new Phaser.Game(800, 600, Phaser.CANVAS, "phaser-example", { 
     preload: () => {
@@ -8,7 +8,7 @@ var game = new Phaser.Game(800, 600, Phaser.CANVAS, "phaser-example", {
         game.load.spritesheet("button", "assets/buttons/flixel-button.png", 80, 20);
         game.load.bitmapFont("nokia", "assets/fonts/bitmapFonts/nokia16black.png", "assets/fonts/bitmapFonts/nokia16black.xml");
 
-        game.load.audiosprite("sfx", "assets/audio/SoundEffects/fx_mixdown.ogg", null, audioJSON);
+        game.load.audiosprite("sfx", "assets/audio/SoundEffects/fx_mixdown.ogg", (<any> audioJSON));
     }, 
 
     create: () => {
@@ -31,15 +31,15 @@ var game = new Phaser.Game(800, 600, Phaser.CANVAS, "phaser-example", {
         fx.addMarker("squit", 19, 0.3);
 
         //  Make some buttons to trigger the sounds
-        makeButton("alien death", 600, 100);
-        makeButton("boss hit", 600, 140);
-        makeButton("escape", 600, 180);
-        makeButton("meow", 600, 220);
-        makeButton("numkey", 600, 260);
-        makeButton("ping", 600, 300);
-        makeButton("death", 600, 340);
-        makeButton("shot", 600, 380);
-        makeButton("squit", 600, 420);
+        makeButtons("alien death", 600, 100);
+        makeButtons("boss hit", 600, 140);
+        makeButtons("escape", 600, 180);
+        makeButtons("meow", 600, 220);
+        makeButtons("numkey", 600, 260);
+        makeButtons("ping", 600, 300);
+        makeButtons("death", 600, 340);
+        makeButtons("shot", 600, 380);
+        makeButtons("squit", 600, 420);
     }
 });
 
@@ -93,18 +93,18 @@ var audioJSON: any = {
     }
 };
 
-function makeButton(name: string, x: number, y: number) {
+function makeButtons(name: string, x: number, y: number) {
 
-    var button: Phaser.Button = game.add.button(x, y, "button", click, this, 0, 1, 2);
+    var button: Phaser.Button = game.add.button(x, y, "button", clicks, this, 0, 1, 2);
     button.name = name;
     button.scale.set(2, 1.5);
     button.smoothed = false;
 
-    var text: Phaser.Text = game.add.bitmapText(x, y + 7, "nokia", name, 16);
+    var text: Phaser.BitmapText = game.add.bitmapText(x, y + 7, "nokia", name, 16);
     text.x += (button.width / 2) - (text.textWidth / 2);
 
 }
 
-function click(button: Phaser.Button) {
+function clicks(button: Phaser.Button) {
 	fx.play(button.name);
 }

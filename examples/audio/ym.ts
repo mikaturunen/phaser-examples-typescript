@@ -1,4 +1,7 @@
 
+// Globally defined in the website structure I suppose
+declare var YM: any;
+
 // Throwing a type on the fly to make typing easier
 interface MusicMeta {
     name: string;
@@ -105,11 +108,11 @@ musics = [
     }
 ];
 
-function moveSelector (index) {
+function moveSelector (index: number) {
     selector.y = index * 26;
 }
 
-function changeSong (index) {
+function changeSong (index: number) {
 
     // load song data from game cache
     var data =  game.cache.getBinary(musics[index].name);
@@ -157,6 +160,60 @@ function buildVu (vu: any, colorbg: any, color: any, width: any) {
 
     vu.beginFill(0, 0.3);
     vu.drawRect(0, height - 25, game.world.width, 25);
+}
+
+function create() {
+    var musicsList: any, style: any, list: any;                                                                                                    
+                                                                                                                                      
+      // sinusoid vu meter moves                                                                                                      
+      moveData = game.make.tween({ y: 0 }).to( { y: 300 }, 1000, "Sine.easeIn").yoyo(true).generateData(60);                          
+                                                                                                                                      
+      // prepare background                                                                                                           
+      game.add.sprite(0, 0, 'bg');                                                                                                    
+      vuGroup = game.add.group();                                                                                                     
+      game.add.sprite(600, 32, 'logo');                                                                                               
+      musicListGroup = game.add.group();                                                                                              
+                                                                                                                                      
+      // display music list                                                                                                           
+      musicsList = "";                                                                                                                
+      musics.forEach((music: MusicMeta, n: any) => {                                                                                            
+          musicsList += music.author + " " + music.name + "\n";                                                                       
+      });                                                                                                                             
+                                                                                                                                      
+      style = { font: "18px Arial", fill: "#ffffff", align: "center" };                                                               
+      list = game.add.text(game.world.centerX, 2, musicsList, style, musicListGroup);                                                 
+      list.lineSpacing = 8;                                                                                                           
+      list.anchor.set(0.5, 0);                                                                                                        
+                                                                                                                                      
+      musicListGroup.y = 380;                                                                                                         
+                                                                                                                                      
+      // selectors graphics                                                                                                           
+      currentPlayingSelector = game.add.graphics(0, 0, musicListGroup);                                                               
+      currentPlayingSelector.beginFill(0xFFFFFF, 0.2);                                                                                
+      currentPlayingSelector.drawRect(0, 0, game.world.width, 21);                                                                    
+                                                                                                                                      
+      selector = game.add.graphics(0, 0, musicListGroup);                                                                             
+      selector.beginFill(0xFFFFFF, 0.4);                                                                                              
+      selector.drawRect(0, 0, game.world.width, 21);                                                                                  
+                                                                                                                                      
+      // prepare vu-meter                                                                                                             
+      vu1 = game.add.graphics(0, 0, vuGroup);                                                                                         
+      vu2 = game.add.graphics(0, 110, vuGroup);                                                                                       
+      vu3 = game.add.graphics(0, 220, vuGroup);                                                                                       
+                                                                                                                                      
+      vu1.movePosIndex = 0;                                                                                                           
+      vu2.movePosIndex = 15;                                                                                                          
+      vu3.movePosIndex = 30;                                                                                                          
+                                                                                                                                      
+      vuGroup.y = 70;                                                                                                                 
+                                                                                                                                      
+      changeSong(0);                                                                                                                  
+      moveSelector(0);                                                                                                                
+                                                                                                                                      
+      cursors = game.input.keyboard.createCursorKeys();                                                                               
+      spacebar = game.input.keyboard.addKey(Phaser.Keyboard.SPACEBAR);                                                                
+                                                                                                                                      
+      time = game.time.time;                                                                                                                                                                                                                         
 }
 
 function update() {

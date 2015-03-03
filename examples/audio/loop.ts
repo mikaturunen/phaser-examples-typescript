@@ -1,16 +1,16 @@
 
-var bass: Phaser.Audio;
-var drums: Phaser.Audio;
-var percussion: Phaser.Audio;
-var synth1: Phaser.Audio;
-var synth2: Phaser.Audio;
-var top1: Phaser.Audio;
-var top2: Phaser.Audio;
+var bass: Phaser.Sound;
+var drums: Phaser.Sound;
+var percussion: Phaser.Sound;
+var synth1: Phaser.Sound;
+var synth2: Phaser.Sound;
+var top1: Phaser.Sound;
+var top2: Phaser.Sound;
 
 var text: Phaser.Text;
-var sounds Phaser.Audio[];
-var current: Phaser.Audio;
-var speakers: Phaser.Sprite;
+var sounds: Phaser.Sound[];
+var current: Phaser.Sound;
+var speakers: Phaser.Image;
 var loopCount: number = 0;
 
 var game = new Phaser.Game(800, 600, Phaser.AUTO, "phaser-example", { 
@@ -38,7 +38,7 @@ var game = new Phaser.Game(800, 600, Phaser.AUTO, "phaser-example", {
         };
 
         text = game.add.text(game.world.centerX, 100, "decoding", style);
-        text.anchor.set(0.5);
+        text.anchor.set(0.5, 0);
         bass = game.add.audio("bass");
         drums = game.add.audio("drums");
         percussion = game.add.audio("percussion");
@@ -52,35 +52,35 @@ var game = new Phaser.Game(800, 600, Phaser.AUTO, "phaser-example", {
         //  Being mp3 files these take time to decode, so we can"t play them instantly
         //  Using setDecodedCallback we can be notified when they"re ALL ready for use.
         //  The audio files could decode in ANY order, we can never be sure which it"ll be.
-        game.sound.setDecodedCallback(sounds, start, this);
+        (<any> game.sound).setDecodedCallback(sounds, startSound, this);
     }
 });
 
-function start() {
+function startSound() {
     sounds.shift();
-    bass.loopFull(0.6);
+    (<any> bass).loopFull(0.6);
     bass.onLoop.add(hasLooped, this);
     text.text = "bass";
 }
 
-function hasLooped(sound: Phaser.Audio) {
+function hasLooped(sound: Phaser.Sound) {
     loopCount++;
 
     if (loopCount === 1) {
         sounds.shift();
-        drums.loopFull(0.6);
+        (<any> drums).loopFull(0.6);
         text.text = "drums";
         game.add
             .tween(speakers.scale)
             .to( { x: 1.3, y: 1.1 }, 230, "Sine.easeInOut", true, 0, -1, true);
     }  else if (loopCount === 2) {
         current = game.rnd.pick(sounds);
-        current.loopFull();
+        (<any> current).loopFull();
         text.text = current.key;
     } else if (loopCount > 2) {
         current.stop();
         current = game.rnd.pick(sounds);
-        current.loopFull();
+        (<any> current).loopFull();
         text.text = current.key;
     }
 }

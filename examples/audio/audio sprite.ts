@@ -1,5 +1,5 @@
 
-var fx: Phaser.Audio;
+var fx: Phaser.Sound;
 
 var game = new Phaser.Game(800, 600, Phaser.CANVAS, "phaser-example", { 
     preload: () => {
@@ -49,7 +49,7 @@ function makeButton(name: string, x: number, y: number) {
     button.scale.set(2, 1.5);
     button.smoothed = false;
 
-    var text: Phaser.Text = game.add.bitmapText(x, y + 7, "nokia", name, 16);
+    var text: Phaser.BitmapText = game.add.bitmapText(x, y + 7, "nokia", name, 16);
     text.x += (button.width / 2) - (text.textWidth / 2);
 }
 

@@ -1,5 +1,5 @@
 
-var music: Phaser.Audio;
+var music: Phaser.Sound;
 
 var game = new Phaser.Game(800, 600, Phaser.CANVAS, "phaser-example", { 
     preload: () => {
@@ -14,7 +14,7 @@ var game = new Phaser.Game(800, 600, Phaser.CANVAS, "phaser-example", {
         music = game.add.audio("boden");
         music.onDecoded.add(() => music.fadeIn(4000), this);
 
-        s: Phaser.Sprite = game.add.sprite(game.world.centerX, game.world.centerY, "disk");
+        var s: Phaser.Sprite = game.add.sprite(game.world.centerX, game.world.centerY, "disk");
         s.anchor.setTo(0.5, 0.5);
     }, 
 

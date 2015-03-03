@@ -40,4 +40,5 @@ var game = new Phaser.Game(800, 600, Phaser.AUTO, "phaser-example", {
             // test.play("float", 20 + i, true); // uncomment this line and comment out the line below for some trippy fun :)
             test.play("float", 20, true);
         }
+    }
 });

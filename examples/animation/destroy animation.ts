@@ -29,7 +29,7 @@ function createSprite() {
     mummy.play("walk", 10, true);
 }
 
-function checkSprite(sprite) {
+function checkSprite(sprite: Phaser.Sprite) {
     try {
         if (sprite.x > game.width) {
             rip++;

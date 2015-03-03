@@ -1,6 +1,6 @@
 
 var s: Phaser.Sprite;
-var music: Phaser.Audio;
+var music: Phaser.Sound;
 
 var game = new Phaser.Game(800, 600, Phaser.CANVAS, "phaser-example", { 
     preload: () => {
@@ -20,7 +20,7 @@ var game = new Phaser.Game(800, 600, Phaser.CANVAS, "phaser-example", {
         s = game.add.sprite(game.world.centerX, game.world.centerY, "disk");
         s.anchor.setTo(0.5, 0.5);
 
-        game.input.onDown.add(changeVolume, this);
+        game.input.onDown.add(musicVolumeChanger, this);
     }, 
 
     update: () => {
@@ -32,7 +32,7 @@ var game = new Phaser.Game(800, 600, Phaser.CANVAS, "phaser-example", {
     }
 });
 
-function changeVolume(pointer) {
+function musicVolumeChanger(pointer: any) {
 
     if (pointer.y < 300)
     {

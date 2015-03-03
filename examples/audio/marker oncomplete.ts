@@ -1,5 +1,8 @@
 
-var fx: Phaser.Audio;
+// TODO where is the button? global? :o
+declare var button: any;
+
+var fx: Phaser.Sound;
 
 var game = new Phaser.Game(800, 600, Phaser.CANVAS, "phaser-example", { 
     preload: () => {

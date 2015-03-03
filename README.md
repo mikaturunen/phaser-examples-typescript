@@ -2,7 +2,7 @@
 
 # Phaser Examples
 
-This is the Phaser Examples repository.
+This is the Phaser Examples repository for TypeScript versios of all the Phasers examples at: [Phaser Examples](https://github.com/photonstorm/phaser-examples).
 If you're looking for the framework itself, please go here: https://github.com/photonstorm/phaser
 
 Phaser is a fast, free and fun open source game framework for making desktop and mobile browser HTML5 games. It uses [Pixi.js](https://github.com/GoodBoyDigital/pixi.js/) internally for fast 2D Canvas and WebGL rendering. This repository is specifically for all of the Examples we produce to go with it.
@@ -21,12 +21,12 @@ Alternatively in order to start the included web server, after you've cloned the
 
 There is a 'Side View' example viewer as well as the default. This loads all the examples into a left-hand frame for faster navigation.
 
-You can also browse all [Phaser Examples](http://examples.phaser.io) online.
+You can also browse all [Phaser Examples](http://examples.phaser.io) (JavaScript versions) online.
 
 
 ## Contributing
 
-- If you find a bug in an example then please report it on [GitHub Issues][issues] or our [Support Forum][forum].
+- If you find a bug in an example then please report it on [GitHub Issues][issues] or Phasers support Forum.
 
 - You can issue Pull Requests for new examples or fixes to existing ones against the `master` branch.
 
@@ -41,6 +41,9 @@ Please add them to the [Issue Tracker][issues] with as much info as possible, es
 ## About Phaser
 
 Phaser is a fast, free and fun open source game framework for making desktop and mobile browser HTML5 games. It uses [Pixi.js](https://github.com/GoodBoyDigital/pixi.js/) internally for fast 2D Canvas and WebGL rendering.
+
+TypeScript examples by [Mika Turunen](https://github.com/mikaturunen/)
+
 
 By Richard Davey, [Photon Storm](http://www.photonstorm.com)
 
@@ -58,7 +61,7 @@ By Richard Davey, [Photon Storm](http://www.photonstorm.com)
 
 Phaser and all examples are released under the [MIT License](http://opensource.org/licenses/MIT). This does not include any assets (art, music, sounds)
 
-[issues]: https://github.com/photonstorm/phaser-examples/issues
+[issues]: https://github.com/mikaturunen/phaser-examples-typescript/issues
 [contribute]: https://github.com/photonstorm/phaser/blob/master/CONTRIBUTING.md
 [phaser]: https://github.com/photonstorm/phaser-examples
 [forum]: http://www.html5gamedevs.com/forum/14-phaser/

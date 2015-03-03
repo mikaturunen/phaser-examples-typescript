@@ -10,10 +10,14 @@ module.exports = function (grunt) {
             default : {
                 src: [ 
                     "node_modules/phaser/typescript/phaser.d.ts",
-                    "examples/*.ts", 
+                    "examples/**/*.ts", 
                 ],
                 options: {
-                    noImplicitAny: true
+                    noImplicitAny: true,
+                    compile: true,
+                    module: "amd",
+                    target : "es5",
+                    sourceMap: false    // We are not uglifying so.. not generating these
                 }
             }
         },

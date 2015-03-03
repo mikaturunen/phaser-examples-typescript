@@ -1,5 +1,5 @@
 
-var back: Phaser.Sprite;
+var back: Phaser.Image;
 var mummy: Phaser.Sprite;
 var anim: Phaser.Animation;
 var loopText: Phaser.Text;
@@ -35,11 +35,11 @@ var game = new Phaser.Game(800, 600, Phaser.CANVAS, "phaser-example", {
     }
 });
 
-function animationStarted(sprite, animation) {
+function animationStarted(sprite: Phaser.Sprite, animation: Phaser.Animation) {
     game.add.text(32, 32, "Animation started", { fill: "white" });
 }
 
-function animationLooped(sprite, animation) {
+function animationLooped(sprite: Phaser.Sprite, animation: Phaser.Animation) {
     if (animation.loopCount === 1) {
         loopText = game.add.text(32, 64, "Animation looped", { fill: "white" });
     } else {
@@ -48,6 +48,6 @@ function animationLooped(sprite, animation) {
     }
 }
 
-function animationStopped(sprite, animation) {
+function animationStopped(sprite: Phaser.Sprite, animation: Phaser.Animation) {
     game.add.text(32, 64+32, "Animation stopped", { fill: "white" });
 }

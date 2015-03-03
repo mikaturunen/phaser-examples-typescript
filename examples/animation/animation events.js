@@ -42,4 +42,3 @@ function animationLooped(sprite, animation) {
 function animationStopped(sprite, animation) {
     game.add.text(32, 64 + 32, "Animation stopped", { fill: "white" });
 }
-//# sourceMappingURL=animation events.js.map

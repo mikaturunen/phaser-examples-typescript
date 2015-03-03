@@ -1,29 +1,24 @@
 
-var game = new Phaser.Game(800, 600, Phaser.AUTO, 'phaser-example', { preload: preload, create: create});
+var bot: Phaser.Sprite;
 
-function preload() {
+var game = new Phaser.Game(800, 600, Phaser.AUTO, 'phaser-example', { 
+    preload: () => {
+        //  Texture Atlas Method 2
+        //
+        //  In this example we assume that the TexturePacker JSON data is a real json object stored as a var
+        //  (in this case botData)
 
-    //  Texture Atlas Method 2
-    //
-    //  In this example we assume that the TexturePacker JSON data is a real json object stored as a var
-    //  (in this case botData)
+        game.load.atlas('bot', 'assets/sprites/running_bot.png', null, botData);
+    },
 
-    game.load.atlas('bot', 'assets/sprites/running_bot.png', null, botData);
+    create: () => {
+        bot = game.add.sprite(game.world.centerX, 300, 'bot');
+        bot.animations.add('run');
+        bot.animations.play('run', 10, true);
+    }
+});
 
-}
-
-var bot;
-
-function create() {
-
-    bot = game.add.sprite(game.world.centerX, 300, 'bot');
-
-    bot.animations.add('run');
-    bot.animations.play('run', 10, true);
-
-}
-
-var botData = {
+var botData: any = {
     "frames": [
 
 {

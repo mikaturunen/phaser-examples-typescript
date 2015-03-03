@@ -1,10 +1,16 @@
 module.exports = function (grunt) {
 
     grunt.loadNpmTasks("grunt-contrib-connect");
+    grunt.loadNpmTasks("grunt-ts");
 
     grunt.loadTasks("./tasks");
 
     grunt.initConfig({
+        ts: {
+          default : {
+            src: ["**/*.ts", "!node_modules/**/*.ts"]
+          }
+        }
         examples: {
             all: {
                 options: {

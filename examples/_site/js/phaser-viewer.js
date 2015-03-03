@@ -70,12 +70,26 @@ $(document).ready(function(){
 	});
 
 	var load_example_code = function () {		
-		$.getScript(dir + "/" + file).done(function(script, textStatus) {
-			$.ajax({ url: dir + "/" + file, dataType: "text" }).done(function(data) {
+		var fullFile = dir + "/" + file;
+		$.getScript(fullFile).done(function(script, textStatus) {
+			// trimming the js sources and replacing with ts, as I'm evil like that..
+			if (fullFile.slice(-3) === ".js") {
+				fullFile = fullFile.slice(0, -3) + ".ts";
+			}
+
+			var req = $.ajax({ url: fullFile, dataType: "text" }).done(function(data) {
 				$("#sourcecode").text(data);
 				$.getScript("_site/js/run_prettify.js");
 			});
 
+			req.fail(function() {
+				console.log("Fallback to Javascript");
+				alert("Current demo has not been written in TS yet - displaying JavaScript.");
+				var req = $.ajax({ url: dir + "/" + file, dataType: "text" }).done(function(data) {
+					$("#sourcecode").text(data);
+					$.getScript("_site/js/run_prettify.js");
+				});
+			});
 			//	Hook up the control panel
 			$(".pause-button").click(function() {
 				if (game.paused)
@@ -104,6 +118,7 @@ $(document).ready(function(){
 			});
 
 		}).fail(function(jqxhr, settings, exception) {
+			console.log("TST");
 			$("#title").text("Error");
 			var node = '<p>Unable to load <u>' + dir + '/' + file + '</u></p>';
 			$('#phaser-example').append(node);

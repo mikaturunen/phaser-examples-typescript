@@ -7,15 +7,26 @@ module.exports = function (grunt) {
 
     grunt.initConfig({
         ts: {
-          default : {
-            src: ["**/*.ts", "!node_modules/**/*.ts"]
-          }
-        }
+            default : {
+                src: [ 
+                    "node_modules/phaser/typescript/phaser.d.ts",
+                    "examples/*.ts", 
+                ],
+                options: {
+                    noImplicitAny: true
+                }
+            }
+        },
         examples: {
             all: {
                 options: {
                     base: "examples",
-                    excludes: ["_site", "assets", "states", "wip"]
+                    excludes: [
+                        "_site", 
+                        "assets", 
+                        "states", 
+                        "wip"
+                    ]
                 },
                 src: [ "examples/**/*.js" ],
                 dest: "examples/_site/examples.json"
@@ -33,5 +44,4 @@ module.exports = function (grunt) {
     });
 
     grunt.registerTask("default", [ "examples" ]);
-
 };

@@ -15,22 +15,43 @@ var game = new Phaser.Game(800, 600, Phaser.AUTO, 'phaser-example', {
         game.load.image('bg', 'assets/skies/sky2.png');
 
         // load all songs
-        musics.forEach(music: ) {
-            game.load.binary(music.name, music.file);
-        });
+        musics.forEach(music => game.load.binary(music.name, music.file));
     }, 
 
+    // Defining create in a separate function as it's quite big to keep everything fairly readable
     create: create, 
-    update: update, 
-    render: render 
 
+    // Defining update in a separate function as it's quite big to keep everything fairly readable
+    update: update, 
+
+    render: () => {
+        // some info can be get from the ym instance
+        game.debug.text('Title  : ' + ym.info.title, 16, 24);
+        game.debug.text('Author : ' + ym.info.author, 16, 40);
+        game.debug.text('Comment: ' + ym.info.comment, 16, 56);
+
+        game.debug.text('vu1: ' + ym.vu[0], 16, 72);
+        game.debug.text('vu2: ' + ym.vu[1], 16, 88);
+        game.debug.text('vu3: ' + ym.vu[2], 16, 104);
+    } 
 });
 
-var musicIndex = null,
-    ym, oldValues, values, vu1, vu2, vu3, moveData,
-    vuGroup, musicListGroup, selector, currentPlayingSelector,
-    cursors, time, spacebar;
-
+// If I'm not feeling too lazy, I could type most of these
+var musicIndex: any = null;
+var ym: any;
+var oldValues: any;
+var values: any;
+var vu1: any;
+var vu2: any;
+var vu3: any;
+var moveData: any;
+var vuGroup: any;
+var musicListGroup: any;
+var selector: any;
+var currentPlayingSelector: any;
+var cursors: any;
+var time: any;
+var spacebar: any;
 // define a list of songs
 var musics: MusicMeta[] = [];
 
@@ -84,67 +105,6 @@ musics = [
     }
 ];
 
-function preload() {
-
-    
-
-}
-
-function create() {
-
-    var musicsList, style, list;
-
-    // sinusoid vu meter moves
-    moveData = game.make.tween({ y: 0 }).to( { y: 300 }, 1000, "Sine.easeIn").yoyo(true).generateData(60);
-
-    // prepare background
-    game.add.sprite(0, 0, 'bg');
-    vuGroup = game.add.group();
-    game.add.sprite(600, 32, 'logo');
-    musicListGroup = game.add.group();
-
-    // display music list
-    musicsList = "";
-    musics.forEach(function (music, n) {
-        musicsList += music.author + " " + music.name + "\n";
-    });
-
-    style = { font: "18px Arial", fill: "#ffffff", align: "center" };
-    list = game.add.text(game.world.centerX, 2, musicsList, style, musicListGroup);
-    list.lineSpacing = 8;
-    list.anchor.set(0.5, 0);
-
-    musicListGroup.y = 380;
-
-    // selectors graphics
-    currentPlayingSelector = game.add.graphics(0, 0, musicListGroup);
-    currentPlayingSelector.beginFill(0xFFFFFF, 0.2);
-    currentPlayingSelector.drawRect(0, 0, game.world.width, 21);
-
-    selector = game.add.graphics(0, 0, musicListGroup);
-    selector.beginFill(0xFFFFFF, 0.4);
-    selector.drawRect(0, 0, game.world.width, 21);
-
-    // prepare vu-meter
-    vu1 = game.add.graphics(0, 0, vuGroup);
-    vu2 = game.add.graphics(0, 110, vuGroup);
-    vu3 = game.add.graphics(0, 220, vuGroup);
-
-    vu1.movePosIndex = 0;
-    vu2.movePosIndex = 15;
-    vu3.movePosIndex = 30;
-
-    vuGroup.y = 70;
-
-    changeSong(0);
-    moveSelector(0);
-
-    cursors = game.input.keyboard.createCursorKeys();
-    spacebar = game.input.keyboard.addKey(Phaser.Keyboard.SPACEBAR);
-
-    time = game.time.time;
-}
-
 function moveSelector (index) {
     selector.y = index * 26;
 }
@@ -167,19 +127,18 @@ function changeSong (index) {
     }
 
     // used for display of the vu meter
-    oldValues = [0, 0, 0];
-    values = [0, 0, 0];
-
+    oldValues = [ 0, 0, 0 ];
+    values = [ 0, 0, 0 ];
     // ATARI rulez ;)
     ym.play();
-
     // move "current playing" selector
     // currentPlayingSelector.y = (index * 25);
     currentPlayingSelector.y = selector.y;
 }
 
 // draw one vu meter
-function buildVu (vu, colorbg, color, width) {
+// + I'm extremely lazy, typing to any. Sorry.
+function buildVu (vu: any, colorbg: any, color: any, width: any) {
 
     var height = 75,
         offsetY = (game.world.width - width) / 2;
@@ -208,16 +167,12 @@ function update() {
     // smooth the vu meter real values
     for (var i = 0; i <= 2; i++)
     {
-        if (ym.vu[i] > 1)
-        {
+        if (ym.vu[i] > 1) {
             values[i] = ym.vu[i] * (max / 40);
-        }
-        else
-        {
+        } else {
             values[i] -= 4;
 
-            if (values[i] < 1)
-            {
+            if (values[i] < 1) {
                 values[i] = 0;
             }
         }
@@ -229,11 +184,10 @@ function update() {
     buildVu(vu1, 0x6e128d, 0xab12ca, values[2]);
 
     // vu meter moves
-    [vu1, vu2, vu3].forEach(function (vu, n) {
-        var p;
+    [vu1, vu2, vu3].forEach((vu: any, n: any) => {
+        var p: any;
 
-        if (vu.movePosIndex >= moveData.length)
-        {
+        if (vu.movePosIndex >= moveData.length) {
             vu.movePosIndex = 0;
         }
 
@@ -246,44 +200,24 @@ function update() {
     });
 
     // keep track of old vu meter values for next iteration
-    for (var i = 0; i <= 2; i++)
-    {
+    for (var i = 0; i <= 2; i++) {
         oldValues[i] = ym.vu[i];
     }
 
     // handle cursors for song selection
-    if (game.time.time - time > 200)
-    {
-        if (cursors.up.isDown && musicIndex > 0)
-        {
+    if (game.time.time - time > 200) {
+        if (cursors.up.isDown && musicIndex > 0) {
             musicIndex -= 1;
             moveSelector(musicIndex);
             time = game.time.time;
 
-        }
-        else if (cursors.down.isDown && musicIndex < musics.length - 1)
-        {
+        } else if (cursors.down.isDown && musicIndex < musics.length - 1) {
             musicIndex += 1;
             moveSelector(musicIndex);
             time = game.time.time;
-        }
-        else if (spacebar.isDown)
-        {
+        } else if (spacebar.isDown) {
             changeSong(musicIndex);
             time = game.time.time;
         }
     }
-}
-
-function render() {
-
-    // some info can be get from the ym instance
-    game.debug.text('Title  : ' + ym.info.title, 16, 24);
-    game.debug.text('Author : ' + ym.info.author, 16, 40);
-    game.debug.text('Comment: ' + ym.info.comment, 16, 56);
-
-    game.debug.text('vu1: ' + ym.vu[0], 16, 72);
-    game.debug.text('vu2: ' + ym.vu[1], 16, 88);
-    game.debug.text('vu3: ' + ym.vu[2], 16, 104);
-
 }

@@ -1,51 +1,38 @@
-var game = new Phaser.Game(800, 600, Phaser.CANVAS, 'phaser-example', { preload: preload, create: create, update: update, render: render });
 
-function preload() {
+var sprite1: Phaser.Sprite;
+var sprite2: Phaser.Sprite;
 
-    game.load.image('atari', 'assets/sprites/atari130xe.png');
-    game.load.image('mushroom', 'assets/sprites/mushroom2.png');
+var game = new Phaser.Game(800, 600, Phaser.CANVAS, "phaser-example", { 
+    preload: () => {
+        game.load.image("atari", "assets/sprites/atari130xe.png");
+        game.load.image("mushroom", "assets/sprites/mushroom2.png");
+    }, 
 
-}
+    create: () => {
+        game.stage.backgroundColor = "#2d2d2d";
 
-var sprite1;
-var sprite2;
+        sprite1 = game.add.sprite(150, 300, "atari");
+        sprite1.name = "atari";
+        game.physics.enable(sprite1, Phaser.Physics.ARCADE);
 
-function create() {
+        //  Here you can visually see the two bounding boxes the sprites are using for collision.
+        sprite1.body.immovable = true;
 
-    game.stage.backgroundColor = '#2d2d2d';
+        sprite2 = game.add.sprite(700, 320, "mushroom");
+        sprite2.name = "mushroom";
+        game.physics.enable(sprite2, Phaser.Physics.ARCADE);
+        sprite2.body.velocity.x = -100;
+    }, 
 
-    sprite1 = game.add.sprite(150, 300, 'atari');
-    sprite1.name = 'atari';
-    game.physics.enable(sprite1, Phaser.Physics.ARCADE);
+    update: () => game.physics.arcade.collide(sprite1, sprite2, collisionHandler, null, this),
 
-    //  Here you can visually see the two bounding boxes the sprites are using for collision.
+    render: () => {
+        game.debug.bodyInfo(sprite1, 32, 32);
+        game.debug.body(sprite1);
+        game.debug.body(sprite2);
+    } 
+});
 
-    sprite1.body.immovable = true;
-
-    sprite2 = game.add.sprite(700, 320, 'mushroom');
-    sprite2.name = 'mushroom';
-    game.physics.enable(sprite2, Phaser.Physics.ARCADE);
-    sprite2.body.velocity.x = -100;
-
-}
-
-function update() {
-
-    game.physics.arcade.collide(sprite1, sprite2, collisionHandler, null, this);
-
-}
-
-function collisionHandler (obj1, obj2) {
-
-    game.stage.backgroundColor = '#992d2d';
-
-}
-
-function render() {
-
-    game.debug.bodyInfo(sprite1, 32, 32);
-
-    game.debug.body(sprite1);
-    game.debug.body(sprite2);
-
+function collisionHandler (obj1: Phaser.Sprite, obj2: Phaser.Sprite) {
+    game.stage.backgroundColor = "#992d2d";
 }

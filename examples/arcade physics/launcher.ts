@@ -6,11 +6,11 @@ var ball: Phaser.Sprite;
 var catchFlag = false;
 var launchVelocity = 0;
 
-var game = new Phaser.Game(800, 600, Phaser.CANVAS, 'phaser-example', { 
+var game = new Phaser.Game(800, 600, Phaser.CANVAS, "phaser-example", { 
     preload: () => {
-        game.load.image('analog', 'assets/tests/fusia.png');
-        game.load.image('arrow', 'assets/sprites/longarrow2.png');
-        game.load.image('ball', 'assets/sprites/pangball.png'); 
+        game.load.image("analog", "assets/tests/fusia.png");
+        game.load.image("arrow", "assets/sprites/longarrow2.png");
+        game.load.image("ball", "assets/sprites/pangball.png"); 
     }, 
     
     create: () => {
@@ -18,13 +18,13 @@ var game = new Phaser.Game(800, 600, Phaser.CANVAS, 'phaser-example', {
 
         // set global gravity
         game.physics.arcade.gravity.y = 200;
-        game.stage.backgroundColor = '#0072bc';
+        game.stage.backgroundColor = "#0072bc";
         
         var graphics = game.add.graphics(0,0);
         graphics.beginFill(0x049e0c);
         graphics.drawRect(395, 350, 10, 250);
 
-        analog = game.add.sprite(400, 350, 'analog');
+        analog = game.add.sprite(400, 350, "analog");
 
         game.physics.enable(analog, Phaser.Physics.ARCADE);
 
@@ -34,7 +34,7 @@ var game = new Phaser.Game(800, 600, Phaser.CANVAS, 'phaser-example', {
         analog.alpha = 0;
         analog.anchor.setTo(0.5, 0.0);
         
-        arrow = game.add.sprite(400, 350, 'arrow');
+        arrow = game.add.sprite(400, 350, "arrow");
 
         game.physics.enable(arrow, Phaser.Physics.ARCADE);
 
@@ -43,7 +43,7 @@ var game = new Phaser.Game(800, 600, Phaser.CANVAS, 'phaser-example', {
         arrow.body.allowGravity = false;
         arrow.alpha = 0;
         
-        ball = game.add.sprite(100, 400, 'ball');
+        ball = game.add.sprite(100, 400, "ball");
         game.physics.enable(ball, Phaser.Physics.ARCADE);
         ball.anchor.setTo(0.5, 0.5);
         ball.body.collideWorldBounds = true;

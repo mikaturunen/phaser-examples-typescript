@@ -20,7 +20,7 @@ var game = new Phaser.Game(800, 600, Phaser.CANVAS, "phaser-example", {
         game.add.tween(sprite1.body).to( { y: 400 }, 3000, Phaser.Easing.Linear.None, true);
     }, 
 
-    update: game.physics.arcade.overlap(sprite1, sprite2, overlapHandler, null, this), 
+    update: () => game.physics.arcade.overlap(sprite1, sprite2, overlapHandler, null, this), 
 
     render: () => {
         game.debug.body(sprite1);

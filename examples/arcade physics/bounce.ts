@@ -23,7 +23,5 @@ var game = new Phaser.Game(800, 600, Phaser.CANVAS, "phaser-example", {
         image.body.bounce.set(1);
     }, 
 
-    update: update, 
-
     render: () => game.debug.spriteInfo(image,32,32) 
 });

@@ -1,7 +1,7 @@
 
 var sprite: Phaser.Sprite;
 var group: Phaser.Group;
-var sortDirectionVerticalCursors: Phaser.CursorKeys;
+var simpleSortDirectionCursors: Phaser.CursorKeys;
 
 var game = new Phaser.Game(800, 600, Phaser.AUTO, "phaser-example", { 
     preload: () => {
@@ -10,58 +10,57 @@ var game = new Phaser.Game(800, 600, Phaser.AUTO, "phaser-example", {
     }, 
 
     create: () => {
-        game.world.setBounds(0, 0, 800, 3000);
+        game.world.setBounds(0, 0, 2000, 1200);
         game.physics.startSystem(Phaser.Physics.ARCADE);
 
         game.stage.backgroundColor = "#2d2d2d";
 
-        sprite = game.add.sprite(400, 2900, "phaser");
+        sprite = game.add.sprite(1960, 200, "phaser");
 
-        // TODO fix phaser definitions for .sortDirection?
-        (<any> game.physics.arcade).sortDirection = (<any> Phaser.Physics).Arcade.BOTTOM_TOP;
-
+        // TODO update phaser.d.ts with sortdirection ?
+        (<any> game.physics).arcade.sortDirection = (<any> Phaser.Physics).Arcade.RIGHT_LEFT;
         game.physics.arcade.enable(sprite);
-        
         group = game.add.physicsGroup(Phaser.Physics.ARCADE);
 
         for (var i = 0; i < 500; i++) {
-            var c = group.create(game.rnd.integerInRange(64, 800-64), game.rnd.integerInRange(100, 2900), "veggies", game.rnd.integerInRange(0, 35));
+            var c = group.create(game.rnd.integerInRange(200, 1900), game.rnd.integerInRange(0, 1100), "veggies", game.rnd.integerInRange(0, 35));
             c.name = "veg" + i;
             c.body.immovable = true;
         }
 
         for (var i = 0; i < 20; i++) {
             //  Here we"ll create some chillis which the player can pick-up. They are still part of the same Group.
-            var c = group.create(game.rnd.integerInRange(64, 800-64), game.rnd.integerInRange(0, 2000), "veggies", 17);
+            var c = group.create(game.rnd.integerInRange(100, 770), game.rnd.integerInRange(0, 570), "veggies", 17);
             c.body.immovable = true;
         }
 
         game.camera.follow(sprite);
 
-        sortDirectionVerticalCursors = game.input.keyboard.createCursorKeys();
+        simpleSortDirectionCursors = game.input.keyboard.createCursorKeys();
     }, 
 
     update: () => {
-        game.physics.arcade.collide(sprite, group, sortDirectionCollisionVerticalHandler, null, this);
+        game.physics.arcade.collide(sprite, group, simpleSortDirectionCursorsCollisionHandler, null, this);
 
         sprite.body.velocity.x = 0;
         sprite.body.velocity.y = 0;
 
-        if (sortDirectionVerticalCursors.left.isDown) {
+        if (simpleSortDirectionCursors.left.isDown) {
             sprite.body.velocity.x = -200;
-        } else if (sortDirectionVerticalCursors.right.isDown) {
+        } else if (simpleSortDirectionCursors.right.isDown) {
             sprite.body.velocity.x = 200;
         }
 
-        if (sortDirectionVerticalCursors.up.isDown) {
+        if (simpleSortDirectionCursors.up.isDown) {
             sprite.body.velocity.y = -200;
-        } else if (sortDirectionVerticalCursors.down.isDown) {
+        } else if (simpleSortDirectionCursors.down.isDown)
+        {
             sprite.body.velocity.y = 200;
         }
     } 
 });
 
-function sortDirectionCollisionVerticalHandler (player: Phaser.Sprite, veg: Phaser.Sprite) {
+function simpleSortDirectionCursorsCollisionHandler (player: Phaser.Sprite, veg: Phaser.Sprite) {
     //  If the player collides with the chillis then they get eaten :)
     //  The chilli frame ID is 17
     if (veg.frame === 17) {

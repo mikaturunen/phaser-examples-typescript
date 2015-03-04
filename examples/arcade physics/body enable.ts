@@ -2,16 +2,16 @@
 var sprite: Phaser.Sprite;
 var sprite2: Phaser.Sprite;
 
-var game = new Phaser.Game(800, 600, Phaser.CANVAS, 'phaser-example', { 
-	preload: () => game.load.spritesheet('gameboy', 'assets/sprites/gameboy_seize_color_40x60.png', 40, 60), 
+var game = new Phaser.Game(800, 600, Phaser.CANVAS, "phaser-example", { 
+	preload: () => game.load.spritesheet("gameboy", "assets/sprites/gameboy_seize_color_40x60.png", 40, 60), 
 
 	create: () => {
 		game.physics.startSystem(Phaser.Physics.ARCADE);
 
-		game.stage.backgroundColor = '#124184';
+		game.stage.backgroundColor = "#124184";
 
-		sprite = game.add.sprite(300, 0, 'gameboy', 2);
-		sprite2 = game.add.sprite(300, 400, 'gameboy', 3);
+		sprite = game.add.sprite(300, 0, "gameboy", 2);
+		sprite2 = game.add.sprite(300, 400, "gameboy", 3);
 
 		game.physics.arcade.enable([sprite, sprite2]);
 
@@ -29,7 +29,7 @@ var game = new Phaser.Game(800, 600, Phaser.CANVAS, 'phaser-example', {
 	update: () => game.physics.arcade.collide(sprite, sprite2), 
 
 	render: () => {
-		game.debug.text('Click to disable body1', 32, 32);
+		game.debug.text("Click to disable body1", 32, 32);
 
 		if (sprite2.body.enable) {
 		    game.debug.body(sprite2);

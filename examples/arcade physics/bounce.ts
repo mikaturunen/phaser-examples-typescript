@@ -3,15 +3,15 @@
 
 var image: Phaser.Sprite;
 
-var game = new Phaser.Game(800, 600, Phaser.CANVAS, 'phaser-example', { 
-    preload: () => game.load.image('flyer', 'assets/sprites/phaser-dude.png'), 
+var game = new Phaser.Game(800, 600, Phaser.CANVAS, "phaser-example", { 
+    preload: () => game.load.image("flyer", "assets/sprites/phaser-dude.png"), 
 
     create: () => {
         game.physics.startSystem(Phaser.Physics.ARCADE);
         //  This creates a simple sprite that is using our loaded image and
         //  displays it on-screen
         //  and assign it to a variable
-        image = game.add.sprite(0, 0, 'flyer');
+        image = game.add.sprite(0, 0, "flyer");
         game.physics.enable(image, Phaser.Physics.ARCADE);
         //  This gets it moving
         image.body.velocity.setTo(200,200);      

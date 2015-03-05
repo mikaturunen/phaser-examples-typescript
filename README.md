@@ -7,6 +7,8 @@ If you're looking for the framework itself, please go here: https://github.com/p
 
 Phaser is a fast, free and fun open source game framework for making desktop and mobile browser HTML5 games. It uses [Pixi.js](https://github.com/GoodBoyDigital/pixi.js/) internally for fast 2D Canvas and WebGL rendering. This repository is specifically for all of the Examples we produce to go with it.
 
+NOTE: I use the issues page heavily to follow what examples are converted and what's generally going on with the TypeScript examples :)
+
 ## Learn By Example
 
 Phaser comes with an ever growing suite of Examples. Personally we feel that you learn better by looking at small refined code examples. So we created over 250 of them, and create new ones to test nearly every feature added to Phaser. Inside this `examples` repo you'll find the current set. If you write a particularly good example then please send it to us.

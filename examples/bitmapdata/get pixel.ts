@@ -3,7 +3,7 @@ var bmd: Phaser.BitmapData;
 var tooltip: Phaser.BitmapData;
 var sprite: Phaser.Sprite;
 
-var game = new Phaser.Game(800, 600, Phaser.AUTO, "phaser-example", { 
+var game: Phaser.Game = new Phaser.Game(800, 600, Phaser.AUTO, "phaser-example", { 
 	preload: () => game.load.image("wheel", "assets/pics/color_wheel_swirl.png"), 
 
 	create: () => {

@@ -19,7 +19,8 @@ var game: Phaser.Game = new Phaser.Game(800, 600, Phaser.CANVAS, "phaser-example
 	    }
 
 	    //  Populate the wave with some data
-		waveData = game.math.sinCosGenerator(32, 8, 8, 2);
+	    //  TODO upadte phaser.d.ts? no sincosgenerator
+		waveData = (<any> game.math).sinCosGenerator(32, 8, 8, 2);
 	}, 
 
 	update: () => {
@@ -40,7 +41,7 @@ function updateWobblyBall() {
 		copyPoint.x = x;
 		copyPoint.y = waveSize + (waveSize / 2) + waveData.sin[s];
 
-		bmd.context.drawImage(game.cache.getImage("ball"), copyRect.x, copyRect.y, copyRect.w, copyRect.h, copyPoint.x, copyPoint.y, copyRect.w, copyRect.h);
+		(<any> bmd.context).drawImage(game.cache.getImage("ball"), copyRect.x, copyRect.y, copyRect.w, copyRect.h, copyPoint.x, copyPoint.y, copyRect.w, copyRect.h);
 			
 		copyRect.x += wavePixelChunk;
 			
@@ -53,7 +54,8 @@ function updateWobblyBall() {
 	bmd.render();
 
 	//	Cycle through the wave data - this is what causes the image to "undulate"
-	game.math.shift(waveData.sin);
+	//	TODO update phaser.d.ts no shift in math
+	(<any> game.math).shift(waveData.sin);
 	
 	waveDataCounter++;
 	

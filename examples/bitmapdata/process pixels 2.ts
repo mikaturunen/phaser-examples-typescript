@@ -14,10 +14,10 @@ var game: Phaser.Game = new Phaser.Game(800, 600, Phaser.AUTO, "phaser-example",
 });
 
 function processPixels2Start () {
-	bmd.processPixelRGB(forEachPixel, this);
+	bmd.processPixelRGB(processPixel2ForEachPixel, this);
 }
 
-function forEachPixel (pixel: any) {
+function processPixel2ForEachPixel (pixel: any) {
     /**
     * This callback will be sent a single object with 6 properties: `{ r: number, g: number, b: number, a: number, color: number, rgba: string }`.
     * Where r, g, b and a are integers between 0 and 255 representing the color component values for red, green, blue and alpha.

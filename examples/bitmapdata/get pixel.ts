@@ -9,7 +9,8 @@ var game: Phaser.Game = new Phaser.Game(800, 600, Phaser.AUTO, "phaser-example",
 	create: () => {
 		bmd = game.make.bitmapData(800, 600);
 		bmd.draw("wheel", -200, -100);
-		bmd.update();
+		// TODO update phaser.d.ts for update?
+		(<any> bmd).update();
 		bmd.addToWorld();
 
 		tooltip = game.make.bitmapData(64, 64);

@@ -19,7 +19,8 @@ var game: Phaser.Game = new Phaser.Game(800, 600, Phaser.CANVAS, 'phaser-example
 
         //  Our text object
         text = game.make.text(0, 0, "phaser", { font: "bold 32px Arial", fill: "#ff0044" });
-        text.anchor.set(0.5);
+        // TODO update phaser.d.ts ?
+        (<any> text.anchor).set(0.5);
 
         game.add.tween(text.scale).to( { x: 0.5, y: 0.5 }, 2000, Phaser.Easing.Linear.None, true, 0, Number.MAX_VALUE, true);
 
@@ -33,6 +34,7 @@ var game: Phaser.Game = new Phaser.Game(800, 600, Phaser.CANVAS, 'phaser-example
         //  Un-comment to see the rotation in action
         // text.rotation += 0.05;
 
-        bmd.draw(text, game.world.randomX, game.world.randomY, null, null, 'destination-out');
+        // TODO update phaser.d.ts ?
+        (<any> bmd).draw(text, game.world.randomX, game.world.randomY, null, null, 'destination-out');
     } 
 });

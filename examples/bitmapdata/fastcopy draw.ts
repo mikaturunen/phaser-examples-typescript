@@ -18,7 +18,7 @@ var game: Phaser.Game = new Phaser.Game(800, 600, Phaser.CANVAS, "phaser-example
         r = new Phaser.Rectangle(0, 0, game.width, game.height);
 
         //  r = the rotation, s = the scale
-        data = { r: 0, s: 0.5 };
+        var data: any = { r: 0, s: 0.5 };
         //  Change the tween duration, ease type, values, etc for different effects
         game.add.tween(data).to( { r: 360, s: 2 }, 2000, Phaser.Easing.Sinusoidal.InOut, true, 0, Number.MAX_VALUE, true);
     }, 
@@ -36,7 +36,7 @@ function fastCopyPaint(pointer: Phaser.Pointer, x: number, y: number) {
     if (pointer.isDown) {
         //  Change the 4 - the width of the pen, to anything you like
         bmd.circle(x, y, 4, colors[i].rgba);
-        i = game.math.wrapValue(i, 1, 359);
+        i = (<any> game.math).wrapValue(i, 1, 359);
     }
 
 }

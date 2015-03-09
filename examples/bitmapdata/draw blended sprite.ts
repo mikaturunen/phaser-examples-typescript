@@ -1,6 +1,6 @@
 
-var bmd;
-var loop;
+var bmd: Phaser.BitmapData;
+var loop: Phaser.Sprite;
 
 var game: Phaser.Game = new Phaser.Game(800, 600, Phaser.CANVAS, "phaser-example", { 
 	preload: () => {
@@ -40,8 +40,9 @@ var game: Phaser.Game = new Phaser.Game(800, 600, Phaser.CANVAS, "phaser-example
 	}
 });
 
-function paint(pointer: Phaser.Pointer, x: number, y: number) {
+function paint(pointer: Phaser.Pointer, x: string, y: string) {
 	if (pointer.isDown) {
-		bmd.draw(loop, x, y, null, null, "destination-out");
+		// TODO update phaser.d.ts ?
+		(<any> bmd).draw(loop, x, y, null, null, "destination-out");
 	}
 }

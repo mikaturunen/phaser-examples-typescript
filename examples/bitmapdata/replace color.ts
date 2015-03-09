@@ -15,5 +15,6 @@ var game = new Phaser.Game(800, 600, Phaser.AUTO, "phaser-example", {
 
 function replaceColorRecolor () {
     // replaceRGB: function (sourceR, sourceG, sourceB, sourceA, destR, destG, destB, destA, region) {
-	bmd.replaceRGB(0, 85, 255, 255, 0, 250, 40, 255);
+    // TODO update phaser.d.ts?
+	(<any> bmd).replaceRGB(0, 85, 255, 255, 0, 250, 40, 255);
 }

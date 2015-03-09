@@ -118,7 +118,7 @@ $(document).ready(function(){
 			});
 
 		}).fail(function(jqxhr, settings, exception) {
-			console.log("TST", jqxhr, settings, exception);
+			console.log("TST", fullFile, jqxhr, settings, exception);
 			$("#title").text("Error");
 			var node = '<p>Unable to load <u>' + dir + '/' + file + '</u></p>';
 			$('#phaser-example').append(node);

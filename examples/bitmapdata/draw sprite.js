@@ -2,7 +2,7 @@ var _this = this;
 var bmd;
 var loop;
 var game = new Phaser.Game(800, 600, Phaser.CANVAS, "phaser-example", {
-    preload: game.load.image("loop", "assets/sprites/loop.png"),
+    preload: function () { return game.load.image("loop", "assets/sprites/loop.png"); },
     create: function () {
         loop = game.make.sprite(0, 0, "loop");
         loop.anchor.set(0.5);

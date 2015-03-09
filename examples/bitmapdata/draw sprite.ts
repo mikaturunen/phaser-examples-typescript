@@ -3,7 +3,7 @@ var bmd: Phaser.BitmapData;
 var loop: Phaser.Sprite;
 
 var game = new Phaser.Game(800, 600, Phaser.CANVAS, "phaser-example", { 
-	preload: game.load.image("loop", "assets/sprites/loop.png"), 
+	preload: () => game.load.image("loop", "assets/sprites/loop.png"), 
 
 	create: () => {
 		//	This is the sprite we"re going to be drawing onto the BitmapData

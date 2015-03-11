@@ -1,6 +1,6 @@
 
 var player: Phaser.Sprite;
-var cursors: Phaser.CursorKeys;
+var cameraCursors: Phaser.CursorKeys;
 
 
 var game = new Phaser.Game(800, 600, Phaser.CANVAS, "phaser-example", { 
@@ -15,7 +15,7 @@ var game = new Phaser.Game(800, 600, Phaser.CANVAS, "phaser-example", {
         game.physics.startSystem(Phaser.Physics.P2JS);
         player = game.add.sprite(game.world.centerX, game.world.centerY, "player");
         game.physics.p2.enable(player);
-        cursors = game.input.keyboard.createCursorKeys();
+        cameraCursors = game.input.keyboard.createCursorKeys();
         game.camera.follow(player);
 
         //  The deadzone is a Rectangle that defines the limits at which the camera will start to scroll
@@ -28,15 +28,15 @@ var game = new Phaser.Game(800, 600, Phaser.CANVAS, "phaser-example", {
     update: () => {
          player.body.setZeroVelocity();
 
-        if (cursors.up.isDown) {
+        if (cameraCursors.up.isDown) {
             player.body.moveUp(300)
-        } else if (cursors.down.isDown) {
+        } else if (cameraCursors.down.isDown) {
             player.body.moveDown(300);
         }
 
-        if (cursors.left.isDown) {
+        if (cameraCursors.left.isDown) {
             player.body.velocity.x = -300;
-        } else if (cursors.right.isDown) {
+        } else if (cameraCursors.right.isDown) {
             player.body.moveRight(300);
         }
     }, 

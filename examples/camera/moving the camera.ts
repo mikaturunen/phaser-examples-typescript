@@ -1,5 +1,5 @@
 
-var cursors: Phaser.CursorKeys;
+var cameraCursors: Phaser.CursorKeys;
 
 var game: Phaser.Game = new Phaser.Game(800, 600, Phaser.CANVAS, "phaser-example", { 
     preload: () => game.load.image("mushroom", "assets/sprites/mushroom2.png"), 
@@ -14,19 +14,19 @@ var game: Phaser.Game = new Phaser.Game(800, 600, Phaser.CANVAS, "phaser-example
             game.add.sprite(game.world.randomX, game.world.randomY, "mushroom");
         }
 
-        cursors = game.input.keyboard.createCursorKeys();
+        cameraCursors = game.input.keyboard.createCursorKeys();
     }, 
 
     update: () => {
-        if (cursors.up.isDown) {
+        if (cameraCursors.up.isDown) {
             game.camera.y -= 4;
-        } else if (cursors.down.isDown) {
+        } else if (cameraCursors.down.isDown) {
             game.camera.y += 4;
         }
 
-        if (cursors.left.isDown) {
+        if (cameraCursors.left.isDown) {
             game.camera.x -= 4;
-        } else if (cursors.right.isDown) {
+        } else if (cameraCursors.right.isDown) {
             game.camera.x += 4;
         }
     }, 

@@ -1,8 +1,8 @@
 
-var cursors: Phaser.CursorKeys;
+var cameraCursors: Phaser.CursorKeys;
 var zooming = false;
 var zoomAmount = 0;
-var size = new Phaser.Rectangle();
+var size: Phaser.Rectangle = new Phaser.Rectangle(0, 0, 0, 0);
 
 var game: Phaser.Game = new Phaser.Game(800, 600, Phaser.CANVAS, "phaser-example", { 
     preload: () => {
@@ -17,7 +17,7 @@ var game: Phaser.Game = new Phaser.Game(800, 600, Phaser.CANVAS, "phaser-example
         size.setTo(-960, -600, 1920, 1200);
 
         game.add.sprite(-960, -600, "backdrop");
-        cursors = game.input.keyboard.createCursorKeys();
+        cameraCursors = game.input.keyboard.createCursorKeys();
 
         //  world center is 0x0, top-left is -960x-600
         game.camera.focusOnXY(-960, -600);
@@ -39,21 +39,21 @@ var game: Phaser.Game = new Phaser.Game(800, 600, Phaser.CANVAS, "phaser-example
             console.log(game.camera.view);
         }
 
-        if (cursors.up.isDown) {
+        if (cameraCursors.up.isDown) {
             game.camera.y -= 4;
-        } else if (cursors.down.isDown) {
+        } else if (cameraCursors.down.isDown) {
             game.camera.y += 4;
         }
 
-        if (cursors.left.isDown) {
+        if (cameraCursors.left.isDown) {
             game.camera.x -= 4;
-        } else if (cursors.right.isDown) {
+        } else if (cameraCursors.right.isDown) {
             game.camera.x += 4;
         }
     }
 });
 
-function startZoom(pointer) {
+function startZoom(pointer: Phaser.Pointer) {
 
     zooming = true;
 

@@ -42,10 +42,10 @@ var game: Phaser.Game = new Phaser.Game(800, 600, Phaser.CANVAS, "phaser-example
         game.camera.follow(ufo);
 
         // follow style switch buttons
-        btn0 = game.add.button(6, 40, "button", lockonFollow,this, 0, 0, 0);
-        btn1 = game.add.button(6, 120, "button", platformerFollow,this, 1, 1, 1);
-        btn2 = game.add.button(6, 200, "button", topdownFollow,this, 2, 2, 2);
-        btn3 = game.add.button(6, 280, "button", topdownTightFollow,this, 3, 3, 3);
+        game.add.button(6, 40, "button", lockonFollow,this, 0, 0, 0);
+        game.add.button(6, 120, "button", platformerFollow,this, 1, 1, 1);
+        game.add.button(6, 200, "button", topdownFollow,this, 2, 2, 2);
+        game.add.button(6, 280, "button", topdownTightFollow,this, 3, 3, 3);
     }, 
 
     update: () => {

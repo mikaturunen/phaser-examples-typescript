@@ -1,6 +1,6 @@
 
 var card: Phaser.Sprite;
-var cursors: Phaser.CursorKeys;
+var cameraCursors: Phaser.CursorKeys;
 
 var game: Phaser.Game = new Phaser.Game(800, 600, Phaser.CANVAS, "phaser-example", { 
     preload: () => {
@@ -20,25 +20,25 @@ var game: Phaser.Game = new Phaser.Game(800, 600, Phaser.CANVAS, "phaser-example
 
         game.camera.follow(card);
 
-        cursors = game.input.keyboard.createCursorKeys();
+        cameraCursors = game.input.keyboard.createCursorKeys();
     }, 
 
     update: () => {
          card.body.velocity.x = 0;
         card.body.velocity.y = 0;
 
-        if (cursors.left.isDown) {
+        if (cameraCursors.left.isDown) {
             // card.x -= 4;
             card.body.velocity.x = -240;
-        } else if (cursors.right.isDown) {
+        } else if (cameraCursors.right.isDown) {
             // card.x += 4;
             card.body.velocity.x = 240;
         }
 
-        if (cursors.up.isDown) {
+        if (cameraCursors.up.isDown) {
             // card.y -= 4;
             card.body.velocity.y = -240;
-        } else if (cursors.down.isDown) {
+        } else if (cameraCursors.down.isDown) {
             // card.y += 4;
             card.body.velocity.y = 240;
         }

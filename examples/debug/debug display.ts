@@ -3,7 +3,7 @@ var sprite: Phaser.Sprite;
 var counter = 0 ;
 var step = Math.PI * 2 / 360 ;
 
-var game: Phaser.Sprite = new Phaser.Game(800, 600, Phaser.CANVAS, "phaser-example", { 
+var game: Phaser.Game = new Phaser.Game(800, 600, Phaser.CANVAS, "phaser-example", { 
     preload: () => game.load.image("sprite", "assets/sprites/phaser2.png"), 
 
     create: () => {
@@ -25,6 +25,7 @@ var game: Phaser.Sprite = new Phaser.Game(800, 600, Phaser.CANVAS, "phaser-examp
     render: () => {
         // Display
         game.debug.spriteBounds(sprite);
-        game.debug.spriteCorners(sprite, true, true);
+        // TODO update typescript definitions for phaser.d.ts
+        //(<any> game.debug).spriteCorners(sprite, true, true);
     }  
 });

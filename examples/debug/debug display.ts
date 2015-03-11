@@ -1,6 +1,5 @@
 
 var sprite: Phaser.Sprite;
-var spriteB: Phaser.Sprite;
 var counter = 0 ;
 var step = Math.PI * 2 / 360 ;
 
@@ -23,5 +22,9 @@ var game: Phaser.Sprite = new Phaser.Game(800, 600, Phaser.CANVAS, "phaser-examp
         counter += step ;
     }, 
 
-    render: () => game.debug.cameraInfo(game.camera, 32, 32)  
+    render: () => {
+        // Display
+        game.debug.spriteBounds(sprite);
+        game.debug.spriteCorners(sprite, true, true);
+    }  
 });

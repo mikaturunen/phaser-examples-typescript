@@ -8,7 +8,7 @@ var button4: Phaser.Button;
 var button5: Phaser.Button;
 var button6: Phaser.Button;
 
-var game: Game.Phaser = new Phaser.Game(800, 600, Phaser.CANVAS, "phaser-example", { 
+var game: Phaser.Game = new Phaser.Game(800, 600, Phaser.CANVAS, "phaser-example", { 
     preload: () => {
         game.load.spritesheet("button", "assets/buttons/button_sprite_sheet.png", 193, 71);
         game.load.image("sky0","assets/skies/space2.png");
@@ -62,5 +62,6 @@ var game: Game.Phaser = new Phaser.Game(800, 600, Phaser.CANVAS, "phaser-example
 });
 
 function buttonScaleChangeSky (button: Phaser.Button) {
-    background.loadTexture(button.name);
+    // TODO update phaser.d.ts?
+    (<any> background).loadTexture(button.name);
 }

@@ -11,24 +11,12 @@ var game: Phaser.Game = new Phaser.Game(800, 600, Phaser.AUTO, "phaser-example",
         game.add.tileSprite(0, 0, 800, 600, "background");
         group = game.add.group();
 
-        var button: Phaser.Button = game.make.button(game.world.centerX - 95, 400, "button", buttonInGroupRemove, this, 2, 1, 0);
-        window.rich = button;
+        var button: Phaser.Button = game.make.button(game.world.centerX - 95, 400, "button", () => game.world.remove(group), this, 2, 1, 0);
+        (<any> window).rich = button;
 
-        button.onInputbuttonInGroupOver.add(buttonInGroupOver, this);
-        button.onInputOut.add(buttonInGroupOut, this);
+        button.onInputOver.add(() => console.log("button buttonInGroupOver"), this);
+        button.onInputOut.add(() => console.log("button out"), this);
 
         group.add(button);
     } 
 });
-
-function buttonInGroupRemove() {
-    game.world.remove(group);
-}
-
-function buttonInGroupOver() {
-    console.log("button buttonInGroupOver");
-}
-
-function buttonInGroupOut() {
-    console.log("button out");
-}

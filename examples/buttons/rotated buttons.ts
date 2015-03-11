@@ -1,5 +1,5 @@
 
-var button: Phaser.Button;
+var buttons: Phaser.Button;
 
 var game: Phaser.Game = new Phaser.Game(800, 600, Phaser.AUTO, "phaser-example", { 
     preload: () => {

@@ -1,6 +1,8 @@
 
-var button: Phaser.Button;
-var background: Phaser.Sprite;
+var buttons: Phaser.Button;
+var actionBackground: Phaser.TileSprite;
+
+declare var arguments: any;
 
 var game: Phaser.Game = new Phaser.Game(800, 600, Phaser.AUTO, "phaser-example", { 
     preload: () => {
@@ -10,7 +12,7 @@ var game: Phaser.Game = new Phaser.Game(800, 600, Phaser.AUTO, "phaser-example",
 
     create: () => {
         game.stage.backgroundColor = "#182d3b";
-        background = game.add.tileSprite(0, 0, 800, 600, "background");
+        actionBackground = game.add.tileSprite(0, 0, 800, 600, "background");
         button = game.add.button(game.world.centerX - 95, 400, "button", actionOnClickNormal, this, 2, 1, 0);
 
         button.onInputactionOnClickOver.add(actionOnClickOver, this);
@@ -32,5 +34,5 @@ function actionOnClickOut() {
 }
 
 function actionOnClickNormal() {
-    background.visible =! background.visible;
+    actionBackground.visible =! actionBackground.visible;
 }

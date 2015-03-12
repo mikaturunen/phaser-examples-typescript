@@ -25,24 +25,26 @@ var game: Phaser.Game = new Phaser.Game(800, 600, Phaser.AUTO, 'phaser-example',
         }
     },
 
-    update: update 
+    update: () => {
+
+    rasters.resetCursor();
+
+        for (var i = 0; i < rasters.total; i++) {
+            pos[i]++;
+
+            if (pos[i] === data.length)
+            {
+                pos[i] = 0;
+            }
+
+            rasters.cursor.y = 100 + data[pos[i]].y;
+            rasters.next();
+        }
+    }
+
 });
 
 function update() {
 
-    rasters.resetCursor();
-
-    for (var i = 0; i < rasters.total; i++)
-    {
-        pos[i]++;
-
-        if (pos[i] === data.length)
-        {
-            pos[i] = 0;
-        }
-
-        rasters.cursor.y = 100 + data[pos[i]].y;
-        rasters.next();
-    }
 
 }

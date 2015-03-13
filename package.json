@@ -1,6 +1,6 @@
 {
   "name": "phaser-examples-typescript",
-  "version": "0.0.1",
+  "version": "0.0.3",
   "release": "None",
   "description": "Contains TypeScript versions of code examples and related media for the Phaser HTML5 Game Framework.",
   "author": "Richard Davey",

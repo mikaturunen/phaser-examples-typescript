@@ -1,7 +1,7 @@
 
-var data;
-var rasters;
-var pos = [];
+var data: Phaser.Tween;
+var rasters: Phaser.Group;
+var pos: numbe[] = [];
 
 var game: Phaser.Game = new Phaser.Game(800, 600, Phaser.AUTO, 'phaser-example', { 
     preload: () => game.load.image('raster', 'assets/demoscene/raster-blue.png'), 
@@ -27,7 +27,7 @@ var game: Phaser.Game = new Phaser.Game(800, 600, Phaser.AUTO, 'phaser-example',
 
     update: () => {
 
-    rasters.resetCursor();
+        rasters.resetCursor();
 
         for (var i = 0; i < rasters.total; i++) {
             pos[i]++;
@@ -43,8 +43,3 @@ var game: Phaser.Game = new Phaser.Game(800, 600, Phaser.AUTO, 'phaser-example',
     }
 
 });
-
-function update() {
-
-
-}

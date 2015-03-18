@@ -12,7 +12,7 @@ var game = new Phaser.Game(800, 600, Phaser.CANVAS, "phaser-example", {
 		//	This is the sprite that will be drawn to the texture
 		//	Note that we "make" it, not "add" it, as we don"t want it on the display list
 		trailMushroom = game.make.sprite(0, 0, "mushroom");
-		mushroom.anchor.set(0.5);
+		trailMushroom.anchor.set(0.5);
 
 		//	This is the sprite that is drawn to the display. We"ve given it the renderTexture as its texture.
 		game.add.sprite(0, 0, texture);

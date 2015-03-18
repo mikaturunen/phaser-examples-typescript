@@ -1,7 +1,7 @@
 
 var i = 0;
 var bmd: Phaser.BitmapData;
-var colors: any;
+var colors: any[];
 
 var game = new Phaser.Game(800, 600, Phaser.CANVAS, "phaser-example", { 
     create: () => {
@@ -13,7 +13,8 @@ var game = new Phaser.Game(800, 600, Phaser.CANVAS, "phaser-example", {
         game.input.addMoveCallback((pointer: Phaser.Pointer, x: number, y: number) => {
             if (pointer.isDown) {
                 bmd.circle(x, y, 16, colors[i].rgba);
-                i = game.math.wrapValue(i, 1, 359);
+                // TODO update phaser.d.t math?
+                i = (<any> game.math).wrapValue(i, 1, 359);
             }
         }, this);
     } 

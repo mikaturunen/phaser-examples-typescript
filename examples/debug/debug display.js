@@ -17,6 +17,5 @@ var game = new Phaser.Game(800, 600, Phaser.CANVAS, "phaser-example", {
     },
     render: function () {
         game.debug.spriteBounds(sprite);
-        game.debug.spriteCorners(sprite, true, true);
     }
 });

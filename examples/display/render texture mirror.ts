@@ -1,5 +1,5 @@
 
-var mirrorBall Phaser.Sprite;
+var mirrorBall: Phaser.Sprite;
 var texture: Phaser.RenderTexture;
 
 var game: Phaser.Game = new Phaser.Game(800, 600, Phaser.AUTO, "phaser-example", {

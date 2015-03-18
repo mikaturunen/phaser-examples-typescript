@@ -1,6 +1,6 @@
 
-var button;
-var sprite;
+var fullButton: Phaser.Button;
+var sprite: Phaser.Sprite;
 
 var game: Phaser.Game = new Phaser.Game(800, 600, Phaser.CANVAS, "phaser-example", { 
     preload: () => {
@@ -17,7 +17,7 @@ var game: Phaser.Game = new Phaser.Game(800, 600, Phaser.CANVAS, "phaser-example
         // Stretch to fill
         game.scale.fullScreenScaleMode = Phaser.ScaleManager.EXACT_FIT;
 
-        button = game.add.button(
+        fullButton = game.add.button(
                 game.world.centerX - 95, 
                 500, 
                 "button", 
@@ -28,10 +28,10 @@ var game: Phaser.Game = new Phaser.Game(800, 600, Phaser.CANVAS, "phaser-example
                 0
             );
 
-        button.visible = false;
+        fullButton.visible = false;
 
-        game.scale.enterFullScreen.add(() => button.visible = true, this);
-        game.scale.leaveFullScreen.add(()) => button.visible = false, this);
+        game.scale.enterFullScreen.add(() => fullButton.visible = true, this);
+        game.scale.leaveFullScreen.add(() => fullButton.visible = false, this);
 
         game.input.onDown.add(() => game.scale.startFullScreen(), this);
     }, 

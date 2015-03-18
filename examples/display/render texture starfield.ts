@@ -3,7 +3,7 @@ var starfieldStar: Phaser.Sprite;
 var texture1: Phaser.RenderTexture;
 var texture2: Phaser.RenderTexture;
 var texture3: Phaser.RenderTexture;
-var stars: any[] = [];
+var starFieldStars: any[] = [];
 
 var game: Phaser.Game = new Phaser.Game(800, 600, Phaser.AUTO, "phaser-example", { 
     preload: () => game.load.image("star", "assets/sprites/bullet.png"), 
@@ -37,27 +37,27 @@ var game: Phaser.Game = new Phaser.Game(800, 600, Phaser.AUTO, "phaser-example",
                 t = texture3;
             }
 
-            stars.push( { x: game.world.randomX, y: game.world.randomY, speed: s, texture: t });
+            starFieldStars.push({ x: game.world.randomX, y: game.world.randomY, speed: s, texture: t });
         }
     }, 
 
     update: () => {
         for (var i = 0; i < 300; i++) {
             //  Update the stars y position based on its speed
-            stars[i].y += stars[i].speed;
+            starFieldStars[i].y += starFieldStars[i].speed;
 
-            if (stars[i].y > 600) {
+            if (starFieldStars[i].y > 600) {
                 //  Off the bottom of the screen? Then wrap around to the top
-                stars[i].x = game.world.randomX;
-                stars[i].y = -32;
+                starFieldStars[i].x = game.world.randomX;
+                starFieldStars[i].y = -32;
             }
 
             if (i == 0 || i == 100 || i == 200) {
                 //  If it"s the first star of the layer then we clear the texture
-                stars[i].texture.renderXY(star, stars[i].x, stars[i].y, true);
+                starFieldStars[i].texture.renderXY(star, starFieldStars[i].x, starFieldStars[i].y, true);
             } else {
                 //  Otherwise just draw the star sprite where we need it
-                stars[i].texture.renderXY(star, stars[i].x, stars[i].y, false);
+                starFieldStars[i].texture.renderXY(star, starFieldStars[i].x, starFieldStars[i].y, false);
             }
         }
     } 

@@ -1,9 +1,9 @@
 
-var renderCripsBoss;
-var renderCripsMelon;
-var renderCripsbutton;
+var renderCripsBoss: Phaser.Sprite;
+var renderCripsMelon: Phaser.Sprite;
+var renderCripsButton: Phaser.Button;
 
-var game: Phaser.Sprite = new Phaser.Game(800, 600, Phaser.AUTO, "phaser-example", { 
+var game: Phaser.Game = new Phaser.Game(800, 600, Phaser.AUTO, "phaser-example", { 
     preload: () => {
         game.load.image("boss", "assets/misc/boss1.png");
         game.load.image("melon", "assets/sprites/melon.png");
@@ -26,7 +26,7 @@ var game: Phaser.Sprite = new Phaser.Game(800, 600, Phaser.AUTO, "phaser-example
         // game.stage.smoothed = false;
 
         //  Zoom in each time we press the renderCripsbutton
-        renderCripsbutton = game.add.renderCripsbutton(32, 32, "button", () => {
+        renderCripsButton = game.add.button(32, 32, "button", () => {
             renderCripsBoss.scale.x += 0.5;
             renderCripsBoss.scale.y += 0.5;
 

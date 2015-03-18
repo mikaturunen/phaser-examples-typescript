@@ -39,7 +39,12 @@ var game: Phaser.Game = new Phaser.Game(800, 600, Phaser.CANVAS, "phaser-example
 
 		// now create some items and randomly position them in the stuff container
 		for (var i = 0; i < 20; i++) {
-			var item = stuffContainer.create(Math.random() * 400 - 200, Math.random() * 400 - 200, game.rnd.pick(game.cache.getKeys(Phaser.Cache.IMAGE)));
+			var item: any = (<any> stuffContainer).create(
+					Math.random() * 400 - 200, 
+					Math.random() * 400 - 200, 
+					(<any> game).rnd.pick(game.cache.getKeys(Phaser.Cache.IMAGE))
+				);
+
 			item.anchor.setTo(0.5, 0.5);
 		}
 
@@ -48,7 +53,8 @@ var game: Phaser.Game = new Phaser.Game(800, 600, Phaser.CANVAS, "phaser-example
 	},
 
 	update: () => {
-		stuffContainer.addAll("rotation", 0.1);
+		// TODO update phaser.d.ts?
+		(<any> stuffContainer).addAll("rotation", 0.1);
 		count += 0.01;
 
 		// swap the buffers..

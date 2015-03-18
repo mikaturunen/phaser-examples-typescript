@@ -35,10 +35,10 @@ var game = new Phaser.Game(800, 600, Phaser.AUTO, "phaser-example", {
                 starFieldStars[i].y = -32;
             }
             if (i == 0 || i == 100 || i == 200) {
-                starFieldStars[i].texture.renderXY(star, starFieldStars[i].x, starFieldStars[i].y, true);
+                starFieldStars[i].texture.renderXY(starfieldStar, starFieldStars[i].x, starFieldStars[i].y, true);
             }
             else {
-                starFieldStars[i].texture.renderXY(star, starFieldStars[i].x, starFieldStars[i].y, false);
+                starFieldStars[i].texture.renderXY(starfieldStar, starFieldStars[i].x, starFieldStars[i].y, false);
             }
         }
     }

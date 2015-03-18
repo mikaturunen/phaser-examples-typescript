@@ -54,10 +54,10 @@ var game: Phaser.Game = new Phaser.Game(800, 600, Phaser.AUTO, "phaser-example",
 
             if (i == 0 || i == 100 || i == 200) {
                 //  If it"s the first star of the layer then we clear the texture
-                starFieldStars[i].texture.renderXY(star, starFieldStars[i].x, starFieldStars[i].y, true);
+                starFieldStars[i].texture.renderXY(starfieldStar, starFieldStars[i].x, starFieldStars[i].y, true);
             } else {
                 //  Otherwise just draw the star sprite where we need it
-                starFieldStars[i].texture.renderXY(star, starFieldStars[i].x, starFieldStars[i].y, false);
+                starFieldStars[i].texture.renderXY(starfieldStar, starFieldStars[i].x, starFieldStars[i].y, false);
             }
         }
     } 

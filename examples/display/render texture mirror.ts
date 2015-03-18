@@ -1,6 +1,6 @@
 
-var mirrorBall;
-var texture;
+var mirrorBall Phaser.Sprite;
+var texture: Phaser.RenderTexture;
 
 var game: Phaser.Game = new Phaser.Game(800, 600, Phaser.AUTO, "phaser-example", {
 	preload: () => game.load.image("ball", "assets/sprites/pangball.png"), 
@@ -19,30 +19,10 @@ var game: Phaser.Game = new Phaser.Game(800, 600, Phaser.AUTO, "phaser-example",
 	}, 
 
 	update: () => {
-			if (!game.input.activePointer.position.isZero()) {
+		if (!game.input.activePointer.position.isZero()) {
 			//	This time we"ll draw the ball sprite twice, in a mirror effect
 			texture.renderXY(mirrorBall, game.input.activePointer.x, game.input.activePointer.y, true);
 			texture.renderXY(mirrorBall, game.input.activePointer.x, 600 - game.input.activePointer.y, false);
 		}
 	} 
 });
-
-function preload() {
-
-    ;
-
-}
-
-
-
-function create() {
-
-	
-
-}
-
-function update() {
-
-
-
-}

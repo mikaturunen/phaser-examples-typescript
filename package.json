@@ -11,7 +11,7 @@
   "licenseUrl": "http://www.opensource.org/licenses/mit-license.php",
   "repository": {
     "type": "git",
-    "url": "https://github.com/photonstorm/phaser-examples.git"
+    "url": "https://github.com/mikaturunen/phaser-examples-typescript.git"
   },
   "keywords": [
     "HTML5",

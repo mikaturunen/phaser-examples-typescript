@@ -3,7 +3,7 @@
   "version": "0.0.3",
   "release": "None",
   "description": "Contains TypeScript versions of code examples and related media for the Phaser HTML5 Game Framework.",
-  "author": "Richard Davey",
+  "author": "Mika Turunen <mika.turunen@ymail.com>",
   "logo": "https://raw.github.com/photonstorm/phaser/master/phaser-logo-small.png",
   "homepage": "http://phaser.io",
   "bugs": "https://github.com/photonstorm/phaser/issues",

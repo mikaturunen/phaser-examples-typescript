@@ -2,7 +2,7 @@
 
 # Phaser Examples
 
-This is the Phaser Examples repository for TypeScript versios of all the Phasers examples at: [Phaser Examples](https://github.com/photonstorm/phaser-examples).
+This is the Phaser Examples repository for TypeScript versions of all the Phasers examples at: [Phaser Examples](https://github.com/photonstorm/phaser-examples).
 If you're looking for the framework itself, please go here: https://github.com/photonstorm/phaser
 
 Phaser is a fast, free and fun open source game framework for making desktop and mobile browser HTML5 games. It uses [Pixi.js](https://github.com/GoodBoyDigital/pixi.js/) internally for fast 2D Canvas and WebGL rendering. This repository is specifically for all of the Examples we produce to go with it.
@@ -23,7 +23,7 @@ Alternatively in order to start the included web server, after you've cloned the
 
 There is a 'Side View' example viewer as well as the default. This loads all the examples into a left-hand frame for faster navigation.
 
-You can also browse all [Phaser Examples](http://examples.phaser.io) (JavaScript versions) online.
+You can also browse all [Phaser Examples](http://phaser.io/examples) (JavaScript versions) online.
 
 
 ## Contributing

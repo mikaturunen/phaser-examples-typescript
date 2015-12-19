@@ -4,8 +4,6 @@ This is the Phaser Examples repository for TypeScript versions of all the Phaser
 
 If you're looking for the framework itself, please go here: https://github.com/photonstorm/phaser
 
-NOTE: The issues page is used heavily to follow what examples are converted and what's generally going on with the TypeScript examples :)
-
 TypeScript examples by [Mika Turunen](https://github.com/mikaturunen/)
 
 ***
